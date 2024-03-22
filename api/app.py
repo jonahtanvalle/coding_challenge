@@ -9,12 +9,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-@app.route("/")
+@app.route("/")  ## Health check route
 def check():
     return "<p>It's Ok!</p>"
 
 @app.route('/upload', methods=['POST'])
 def upload_csv():
+    '''
+        Route with function used to receive the posted csv files and evalutes by name
+        and match with the right data model structure.
+
+        Simple handling errors and checking of csv files pre uploading.
+    '''
     db.create_all()
     uploaded_file = request.files.get('file')
     if not uploaded_file:

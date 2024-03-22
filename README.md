@@ -48,3 +48,5 @@ If aby doubt please check the evidence.
  3. I also added a column to partition the hired_employees data, but is not necessary depending on the ingest frequency or the DB policies to handle the replacements or the new ID.
 
  TODO: Develop a better Unique ID policy to handle the new additions. 
+
+ ## Please CHECK the folder queries_eda with the second challenge anwers.

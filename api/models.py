@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class Department(db.Model):
+    '''
+        Develop of data model based on csv files for departments
+    '''
     __tablename__ = 'departments'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +15,9 @@ class Department(db.Model):
         return f'<Department {self.department}>'
 
 class Job(db.Model):
+    '''
+        Develop of data model based on csv files for jobs
+    '''
     __tablename__ = 'jobs'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +27,9 @@ class Job(db.Model):
         return f'<Job {self.job}>'
 
 class Employee(db.Model):
+    '''
+        Develop of data model based on csv files for employees
+    '''
     __tablename__ = 'employees'
 
     id = db.Column(db.Integer, primary_key=True)
