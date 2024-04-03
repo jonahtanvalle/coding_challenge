@@ -1,14 +1,12 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
-# Database connection details (replace with yours)
 DATABASE_URL =  'postgresql://postgres:postgres@postgres/postgres'
 
-# Create engine and session maker
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-def get_department_hiring_data():
+def get_average_hiring_data():
     session = SessionLocal()
 
     query = text("""
@@ -41,7 +39,7 @@ def get_department_hiring_data():
             hired_q DESC;
     """)
 
-    rows = session.execute(query)
+    rows = session.execute(query).fetchall()
 
     session.close()
 
