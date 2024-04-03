@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from models import db, Department, Job, Employee
 from datetime import datetime
 from utils import is_integer
+from queries import get_department_hiring_data
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres/postgres'
@@ -59,6 +60,14 @@ def upload_csv():
 
     return jsonify({'message': f'File "{filename}" uploaded successfully'}), 201
 
+@app.route("/hiring_data", methods=['GET'])
+def get_hiring_data():
+    try:
+        data = get_department_hiring_data()
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'message': f'error {e} has raised'})
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
